@@ -1,0 +1,25 @@
+{
+  "name": "rabbitmq-api",
+  "version": "1.0.0",
+  "description": "This is the module to request rabbit-management API",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@192.168.1.206:bart/rabbitmq-api.git"
+  },
+  "keywords": [
+    "rabbitmq",
+    "rabbit",
+    "management",
+    "nodejs"
+  ],
+  "author": "Bart",
+  "license": "ISC",
+  "dependencies": {
+    "qs": "^6.6.0",
+    "request": "^2.88.0"
+  }
+}
