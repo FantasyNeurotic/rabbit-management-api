@@ -6,17 +6,13 @@
   "scripts": {
     "test": "mocha"
   },
-  "repository": {
-    "type": "git",
-    "url": "git@192.168.1.206:bart/rabbitmq-api.git"
-  },
   "keywords": [
     "rabbitmq",
     "rabbit",
     "management",
     "nodejs"
   ],
-  "author": "Bart",
+  "author": "FantasyNeurotic(Bart)",
   "license": "ISC",
   "dependencies": {
     "qs": "^6.6.0",
