@@ -2,11 +2,11 @@ const request = require("request");
 const qs = require("qs");
 
 class RabbitmqApi {
-  constructor(_options = {}) {
-    this.hostname = _options.hostname || "localhost:15672";
-    this.username = _options.username || "guest";
-    this.password = _options.password || "guest";
-    this.protocol = _options.protocol || "http";
+  constructor({hostname = "localhost:15672", username = "guest",  password = "guest", protocol = "http"} = {}) {
+    this.hostname = hostname
+    this.username = username
+    this.password = password
+    this.protocol = protocol
   }
 
   rpc(method, path, params) {
