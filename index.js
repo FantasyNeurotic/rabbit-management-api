@@ -12,7 +12,6 @@ class RabbitmqApi {
   rpc(method, path, params = {}, body = {}) {
     return new Promise((resolve, reject) => {
       const url =  this.protocol + "://" + this.username + ":" + this.password + "@" + this.hostname + "/api/" + path + qs.stringify(params)
-      console.log(method, url)
       request(
         {
           method: method,

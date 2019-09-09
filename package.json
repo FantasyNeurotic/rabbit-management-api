@@ -1,10 +1,13 @@
 {
   "name": "rabbitmq-api",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "This is the module to request rabbit-management API",
   "main": "index.js",
   "scripts": {
     "test": "mocha"
+  },
+  "publishConfig": {
+    "registry": "http://192.168.1.206:11001/repository/npm-hosted/"
   },
   "keywords": [
     "rabbitmq",
