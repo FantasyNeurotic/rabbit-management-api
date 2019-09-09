@@ -9,24 +9,15 @@ class RabbitmqApi {
     this.protocol = protocol
   }
 
-  rpc(method, path, params) {
+  rpc(method, path, params = {}, body = {}) {
     return new Promise((resolve, reject) => {
+      const url =  this.protocol + "://" + this.username + ":" + this.password + "@" + this.hostname + "/api/" + path + qs.stringify(params)
+      console.log(method, url)
       request(
         {
           method: method,
-          url:
-            this.protocol +
-            "://" +
-            this.username +
-            ":" +
-            this.password +
-            "@" +
-            this.hostname +
-            "/api/" +
-            path +
-            qs.stringify(params),
-          body: qs.stringify(params),
-          form: true
+          url,    
+          form: JSON.stringify(body)
         },
         function(err, res, data) {
           if (err) {
@@ -44,27 +35,27 @@ class RabbitmqApi {
     });
   }
   overview() {
-    return this.rpc("GET", "overview/", {});
+    return this.rpc("GET", "overview/");
   }
 
   extensions() {
-    return this.rpc("GET", "definitions/", {});
+    return this.rpc("GET", "definitions/");
   }
 
   definitions() {
-    return this.rpc("GET", "definitions/", {});
+    return this.rpc("GET", "definitions/");
   }
 
   getNode(name) {
-    return this.rpc("GET", "nodes/" + encodeURIComponent(name) + "/", {});
+    return this.rpc("GET", "nodes/" + encodeURIComponent(name) + "/");
   }
 
   nodes() {
-    return this.rpc("GET", "nodes/", {});
+    return this.rpc("GET", "nodes/");
   }
 
   queues() {
-    return this.rpc("GET", "queues/", {});
+    return this.rpc("GET", "queues/");
   }
 
   getQueue(vhost, name) {
@@ -78,6 +69,21 @@ class RabbitmqApi {
       {}
     );
   }
+
+  getQueueDetail(vhost, name, body = { vhost: "/", name: "", truncate: 50000, ackmode: "ack_requeue_true",encoding: "auto",count: 1}) {
+    return this.rpc(
+      "POST",
+      "queues/" +
+        encodeURIComponent(vhost) +
+        "/" +
+        encodeURIComponent(name) +
+        "/get",
+        {},
+        body
+    );
+  }
+
+
   alive(vhost) {
     return this.rpc(
       "GET",

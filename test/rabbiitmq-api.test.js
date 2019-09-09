@@ -8,8 +8,8 @@ var api = new RabbitmqApi({
 });
 
 const test = async () => {
-  const { data } = await api.getQueue("/", "genOAR");
-  console.log(data);
+  const result = await api.getQueue("/", "radiotherapy.failure")
+  const { data } = await api.getQueueDetail("/", "radiotherapy.failure", {"vhost":"/","name":"radiotherapy.failure","truncate":"50000","ackmode":"ack_requeue_true","encoding":"auto","count":10});
 };
 
 test();
